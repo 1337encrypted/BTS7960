@@ -15,8 +15,8 @@ class driveMode
   public:
 
   // Create iBus Object
-  BTS7960_ESP32 motor1;      //Create an object of class motor1
-  BTS7960_ESP32 motor2;      //Create an object of class motor2 should have been LPWM2, RPWM2
+  Dac motor1;      //Create an object of class motor1
+  Dac motor2;      //Create an object of class motor2 should have been LPWM2, RPWM2
   led redLed;                //Create object for red led
   led blueLed;               //Create object for blue led
   buzzer buzz;               //Create object for buzzer
@@ -32,7 +32,7 @@ class driveMode
   driveStates driveStatus = driveStates::none;
 
 
-  driveMode(const BTS7960_ESP32 &, const BTS7960_ESP32 &, const led &, const led &, const buzzer &, const uint8_t &);
+  driveMode(const Dac &, const Dac &, const led &, const led &, const buzzer &, const uint8_t &);
   void begin();
   void loop();
   void driveMode1();
@@ -43,7 +43,7 @@ class driveMode
   // virtual ~driveMode(){}
 };
 
-driveMode::driveMode(const BTS7960_ESP32& motor1, const BTS7960_ESP32& motor2, const led& redLed, const led& blueLed, const buzzer& buzz, const uint8_t& player) : 
+driveMode::driveMode(const Dac& motor1, const Dac& motor2, const led& redLed, const led& blueLed, const buzzer& buzz, const uint8_t& player) : 
 motor1(motor1),
 motor2(motor2),
 redLed(redLed),
@@ -54,12 +54,6 @@ player(player)
  
 void driveMode::begin()
 {
-  motor1.begin();
-  motor1.enable();
-
-  motor2.begin();
-  motor2.enable();
-
   blueLed.begin();
   redLed.begin();
   
