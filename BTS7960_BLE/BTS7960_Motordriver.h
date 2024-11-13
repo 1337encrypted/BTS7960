@@ -8,8 +8,6 @@
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  */
 
-/*Cannot create a .cpp file as  prototypes need the function to be present in the same file*/
-
 #ifndef BTS7960_h
 #define BTS7960_h
 
